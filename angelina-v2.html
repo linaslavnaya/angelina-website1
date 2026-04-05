@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ангелина Вивчаренко</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0C0A08;
+  --ink2:   #1C1810;
+  --ink3:   #2C2418;
+  --gold:   #C4913A;
+  --gold2:  #E2B96A;
+  --gold3:  #F0D9A8;
+  --cream:  #F4EEE4;
+  --cream2: #EAE3D6;
+  --mist:   #7A6E5C;
+  --smoke:  #4A4035;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+
+body{
+  font-family:'Jost',sans-serif;
+  font-weight:300;
+  background:var(--ink);
+  color:var(--cream);
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CURSOR */
+.cur{
+  position:fixed;width:8px;height:8px;background:var(--gold);
+  border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);transition:transform .1s;
+}
+.cur-ring{
+  position:fixed;width:32px;height:32px;
+  border:0.5px solid rgba(196,145,58,.4);
+  border-radius:50%;pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);transition:all .18s ease;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 72px;
+  mix-blend-mode:normal;
+  transition:background .3s,padding .3s;
+}
+nav.scrolled{
+  background:rgba(12,10,8,.92);
+  backdrop-filter:blur(12px);
+  padding:18px 72px;
+  border-bottom:0.5px solid rgba(196,145,58,.12);
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-weight:300;letter-spacing:.12em;
+  color:var(--cream);text-decoration:none;
+  text-transform:uppercase;
+}
+.nav-links{display:flex;gap:44px;list-style:none}
+.nav-links a{
+  font-size:10px;font-weight:400;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--mist);text-decoration:none;
+  transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;right:0;height:0.5px;
+  background:var(--gold);transform:scaleX(0);transition:transform .25s;
+}
+.nav-links a:hover{color:var(--gold2)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--gold2)}
+.nav-contact{
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  padding:9px 22px;border:0.5px solid rgba(196,145,58,.35);
+  transition:background .2s,border-color .2s;
+}
+.nav-contact:hover{background:rgba(196,145,58,.08);border-color:var(--gold)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.burger span{display:block;width:22px;height:0.5px;background:var(--cream);transition:all .3s}
+
+/* PAGE TRANSITION */
+.page{display:none;animation:pageIn .55s ease forwards}
+.page.active{display:block}
+@keyframes pageIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ============ HOME ============ */
+.hero{
+  min-height:100vh;display:grid;grid-template-rows:1fr auto;
+  position:relative;overflow:hidden;padding-top:100px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 70% 50%,rgba(196,145,58,.055) 0%,transparent 70%);
+}
+.hero-rule{
+  position:absolute;top:0;left:72px;bottom:0;
+  width:0.5px;background:linear-gradient(to bottom,transparent,rgba(196,145,58,.2) 30%,rgba(196,145,58,.2) 70%,transparent);
+}
+.hero-inner{
+  display:grid;grid-template-columns:1fr 520px;
+  align-items:center;gap:0;padding:0 72px;max-width:1400px;width:100%;
+  margin:auto;padding-bottom:60px;
+}
+.hero-text{padding-right:60px}
+.hero-eyebrow{
+  font-size:10px;font-weight:400;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:36px;display:flex;align-items:center;gap:16px;
+}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:0.5px;background:var(--gold)}
+.hero-h1{
+  font-family:'Cormorant',serif;
+  font-size:clamp(68px,7.5vw,118px);
+  font-weight:300;line-height:.95;
+  color:var(--cream);letter-spacing:-.01em;margin-bottom:20px;
+}
+.hero-h1 em{
+  font-style:italic;font-weight:300;
+  color:transparent;
+  -webkit-text-stroke:1px var(--gold2);
+}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(18px,2vw,24px);font-weight:300;
+  color:rgba(196,145,58,.75);line-height:1.6;
+  max-width:400px;margin-bottom:52px;
+}
+.hero-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.btn-main{
+  display:inline-block;background:var(--gold);color:var(--ink);
+  font-family:'Jost',sans-serif;font-size:10px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;
+  padding:16px 40px;text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.btn-main:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ghost{
+  font-size:10px;font-weight:300;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mist);text-decoration:none;
+  border-bottom:0.5px solid var(--smoke);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.btn-ghost:hover{color:var(--gold2);border-color:var(--gold)}
+
+.hero-stats{
+  display:flex;gap:2px;border-top:0.5px solid var(--smoke);
+  padding:40px 72px;margin-top:auto;
+}
+.stat{flex:1;padding:0 32px}
+.stat:first-child{padding-left:0}
+.stat-n{
+  font-family:'Cormorant',serif;font-size:clamp(44px,5vw,68px);
+  font-weight:300;color:var(--gold2);line-height:1;
+}
+.stat-l{font-size:11px;color:var(--mist);margin-top:6px;line-height:1.4}
+.stat-div{width:0.5px;background:var(--smoke);margin:8px 0}
+
+/* HERO VISUAL */
+.hero-visual{position:relative}
+.hero-frame{
+  border:0.5px solid rgba(196,145,58,.2);
+  height:560px;position:relative;overflow:hidden;
+}
+.hero-frame-img{
+  width:100%;height:100%;
+  background:linear-gradient(160deg,var(--ink3) 0%,var(--ink2) 40%,rgba(196,145,58,.06) 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-frame-ph{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:14px;letter-spacing:.1em;color:rgba(196,145,58,.3);
+}
+.hero-frame::before{
+  content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;
+  border:0.5px solid rgba(196,145,58,.08);pointer-events:none;z-index:2;
+}
+.hero-badge{
+  position:absolute;bottom:-20px;left:-20px;
+  background:var(--ink);border:0.5px solid rgba(196,145,58,.25);
+  padding:20px 24px;
+}
+.hero-badge-n{
+  font-family:'Cormorant',serif;font-size:40px;font-weight:300;
+  color:var(--gold2);line-height:1;
+}
+.hero-badge-l{font-size:10px;color:var(--mist);margin-top:4px;letter-spacing:.1em}
+
+/* SECTIONS */
+.sec{padding:120px 72px}
+.sec-sm{padding:80px 72px}
+.sec-label{
+  font-size:10px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:14px;
+}
+.sec-label::before{content:'';display:block;width:24px;height:0.5px;background:var(--gold)}
+.sec-h2{
+  font-family:'Cormorant',serif;font-size:clamp(40px,5vw,72px);
+  font-weight:300;line-height:1.08;color:var(--cream);
+}
+.sec-h2 em{font-style:italic;color:var(--gold2)}
+
+/* PAIN */
+.pain-sec{background:var(--ink2)}
+.pain-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  border:0.5px solid rgba(196,145,58,.12);
+  margin-top:60px;
+}
+.pain-cell{
+  padding:48px 44px;border-right:0.5px solid rgba(196,145,58,.1);
+  border-bottom:0.5px solid rgba(196,145,58,.1);
+  transition:background .2s;
+}
+.pain-cell:hover{background:rgba(196,145,58,.03)}
+.pain-cell:nth-child(2n){border-right:none}
+.pain-num{
+  font-family:'Cormorant',serif;font-size:52px;font-weight:300;
+  font-style:italic;color:rgba(196,145,58,.15);line-height:1;margin-bottom:16px;
+}
+.pain-text{font-size:15px;color:#C5B09A;line-height:1.75;font-weight:300}
+.pain-text strong{color:var(--cream);font-weight:400}
+
+/* QUOTE BREAK */
+.quote-sec{
+  padding:110px 72px;text-align:center;position:relative;overflow:hidden;
+}
+.quote-sec::before{
+  content:'"';position:absolute;top:-60px;left:50%;transform:translateX(-50%);
+  font-family:'Cormorant',serif;font-size:400px;font-weight:300;
+  color:rgba(196,145,58,.03);line-height:1;pointer-events:none;
+}
+.quote-body{
+  font-family:'Cormorant',serif;font-style:italic;
+  font-size:clamp(28px,4vw,54px);font-weight:300;
+  color:var(--cream);line-height:1.35;max-width:920px;margin:0 auto 28px;
+  position:relative;
+}
+.quote-attr{
+  font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);
+}
+
+/* ABOUT TEASER */
+.about-teaser{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.about-teaser-text p{
+  font-size:16px;line-height:1.9;color:#B5A896;font-weight:300;margin-bottom:20px;
+}
+.about-teaser-text .pull{
+  font-family:'Cormorant',serif;font-style:italic;font-size:26px;font-weight:300;
+  color:var(--cream);line-height:1.4;margin:32px 0;
+  padding-left:24px;border-left:1px solid var(--gold);
+}
+.about-teaser-img{
+  height:580px;border:0.5px solid rgba(196,145,58,.18);position:relative;overflow:hidden;
+}
+.about-teaser-img-inner{
+  width:100%;height:100%;
+  background:linear-gradient(145deg,var(--ink3),var(--ink2));
+  display:flex;align-items:center;justify-content:center;
+}
+.about-teaser-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,var(--ink2) 0%,transparent 50%);
+}
+
+/* PRODUCTS HOME */
+.products-home{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border:0.5px solid rgba(196,145,58,.15);
+  margin-top:60px;
+}
+.prod-card{
+  padding:52px 40px;border-right:0.5px solid rgba(196,145,58,.12);
+  position:relative;transition:background .25s;
+}
+.prod-card:last-child{border-right:none}
+.prod-card:hover{background:rgba(196,145,58,.03)}
+.prod-card.feat{background:rgba(196,145,58,.04)}
+.prod-feat-badge{
+  position:absolute;top:-1px;left:40px;
+  font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--gold);color:var(--ink);padding:4px 14px;
+}
+.prod-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.prod-h{
+  font-family:'Cormorant',serif;font-size:28px;font-weight:300;
+  color:var(--cream);line-height:1.2;margin-bottom:10px;
+}
+.prod-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--gold);margin-bottom:20px;
+}
+.prod-txt{font-size:13px;color:#A09080;line-height:1.7;margin-bottom:28px;font-weight:300}
+.prod-price{
+  font-family:'Cormorant',serif;font-size:36px;font-weight:300;
+  color:var(--gold2);margin-bottom:28px;
+}
+.prod-link{
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border-bottom:0.5px solid rgba(196,145,58,.3);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.prod-link:hover{color:var(--gold2);border-color:var(--gold2)}
+
+/* BLOG HOME */
+.blog-home-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(196,145,58,.1);
+  border:0.5px solid rgba(196,145,58,.1);
+  margin-top:60px;
+}
+.blog-card{
+  background:var(--ink);padding:40px 36px;
+  transition:background .2s;cursor:pointer;
+}
+.blog-card:hover{background:var(--ink2)}
+.blog-tag{
+  font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+.blog-h{
+  font-family:'Cormorant',serif;font-size:22px;font-weight:300;
+  color:var(--cream);line-height:1.25;margin-bottom:12px;
+}
+.blog-excerpt{font-size:13px;color:#8A7C6C;line-height:1.7;margin-bottom:20px;font-weight:300}
+.blog-read{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mist);display:flex;align-items:center;gap:8px;
+  transition:color .2s;
+}
+.blog-card:hover .blog-read{color:var(--gold)}
+.blog-read::after{content:'→';transition:transform .2s}
+.blog-card:hover .blog-read::after{transform:translateX(4px)}
+
+/* HOME CTA */
+.home-cta{
+  text-align:center;padding:120px 72px;
+  border-top:0.5px solid rgba(196,145,58,.12);
+}
+.home-cta-h{
+  font-family:'Cormorant',serif;font-style:italic;
+  font-size:clamp(44px,6vw,90px);font-weight:300;
+  color:var(--cream);line-height:1.05;margin-bottom:20px;
+}
+.home-cta-h span{color:var(--gold2)}
+.home-cta-sub{font-size:15px;color:var(--mist);max-width:440px;margin:0 auto 48px;line-height:1.7;font-weight:300}
+
+/* ============ ABOUT ============ */
+.about-hero{
+  min-height:60vh;display:flex;align-items:flex-end;
+  padding:120px 72px 80px;position:relative;overflow:hidden;
+}
+.about-hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 70% at 80% 50%,rgba(196,145,58,.06),transparent);
+}
+.about-hero-rule{
+  position:absolute;right:72px;top:0;bottom:0;
+  width:0.5px;background:linear-gradient(to bottom,transparent,rgba(196,145,58,.15) 30%,rgba(196,145,58,.15) 70%,transparent);
+}
+.about-hero-h{
+  font-family:'Cormorant',serif;font-size:clamp(60px,8vw,130px);
+  font-weight:300;line-height:.92;position:relative;
+}
+.about-hero-h .line1{color:var(--cream)}
+.about-hero-h .line2{color:transparent;-webkit-text-stroke:1px rgba(196,145,58,.5);font-style:italic}
+.about-hero-sub{
+  max-width:320px;position:absolute;right:72px;bottom:80px;
+  font-size:14px;color:var(--mist);line-height:1.7;font-weight:300;
+}
+
+.about-story{
+  display:grid;grid-template-columns:100px 1fr 1fr;
+  gap:60px;padding:100px 72px;
+}
+.about-story-num{
+  font-family:'Cormorant',serif;font-size:100px;font-weight:300;font-style:italic;
+  color:rgba(196,145,58,.1);line-height:1;writing-mode:vertical-rl;
+  transform:rotate(180deg);align-self:start;
+}
+.about-story-text p{
+  font-size:16px;line-height:1.9;color:#B5A896;font-weight:300;margin-bottom:22px;
+}
+.about-story-text .big{
+  font-family:'Cormorant',serif;font-style:italic;
+  font-size:28px;font-weight:300;color:var(--cream);line-height:1.45;
+  margin:36px 0;padding-left:20px;border-left:1px solid var(--gold);
+}
+.about-creds{align-self:start;margin-top:8px}
+.creds-title{
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;
+}
+.cred-item{
+  display:flex;gap:14px;padding:14px 0;
+  border-bottom:0.5px solid rgba(196,145,58,.1);
+}
+.cred-dash{color:rgba(196,145,58,.4);font-size:14px;flex-shrink:0}
+.cred-text{font-size:13px;color:#9A8C7C;line-height:1.5;font-weight:300}
+
+/* VALUES */
+.values-sec{background:var(--ink2);padding:100px 72px}
+.values-row{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:0.5px solid rgba(196,145,58,.15);
+  margin-top:60px;
+}
+.val-item{
+  padding:56px 44px 56px 0;
+  border-right:0.5px solid rgba(196,145,58,.1);
+  padding-right:44px;
+}
+.val-item:last-child{border-right:none}
+.val-item:not(:first-child){padding-left:44px}
+.val-num{
+  font-family:'Cormorant',serif;font-size:80px;font-weight:300;font-style:italic;
+  color:rgba(196,145,58,.08);line-height:1;margin-bottom:20px;
+}
+.val-h{
+  font-family:'Cormorant',serif;font-size:30px;font-weight:300;
+  color:var(--gold2);margin-bottom:14px;
+}
+.val-text{font-size:14px;color:#9A8C7C;line-height:1.75;font-weight:300}
+
+/* BIG5 */
+.big5-sec{padding:100px 72px}
+.big5-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:60px}
+.big5-item{
+  display:grid;grid-template-columns:140px 1fr 60px;
+  align-items:center;gap:20px;padding:22px 24px;
+  border:0.5px solid rgba(196,145,58,.1);
+}
+.big5-label{font-size:11px;color:var(--mist);letter-spacing:.1em}
+.big5-bar-wrap{height:2px;background:rgba(196,145,58,.12);position:relative}
+.big5-bar{
+  height:100%;background:linear-gradient(to right,var(--gold),var(--gold2));
+  transition:width 1.2s ease;
+}
+.big5-score{font-family:'Cormorant',serif;font-size:22px;font-weight:300;color:var(--gold2);text-align:right}
+
+/* ============ WORK ============ */
+.work-hero{
+  padding:160px 72px 80px;border-bottom:0.5px solid rgba(196,145,58,.12);
+}
+.work-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.work-hero-right{
+  font-size:15px;color:#9A8C7C;line-height:1.8;font-weight:300;
+  padding-bottom:8px;
+}
+
+.work-products{padding:0 72px 100px}
+.work-prod{
+  display:grid;grid-template-columns:60px 1fr 1fr;
+  gap:60px;padding:80px 0;
+  border-bottom:0.5px solid rgba(196,145,58,.1);
+  align-items:start;
+}
+.work-prod-n{
+  font-family:'Cormorant',serif;font-size:72px;font-weight:300;font-style:italic;
+  color:rgba(196,145,58,.15);line-height:1;
+}
+.work-prod-left .prod-label{margin-bottom:16px}
+.work-prod-left .prod-h{font-size:38px;margin-bottom:8px}
+.work-prod-left .prod-sub{font-size:18px;margin-bottom:20px}
+.work-prod-price{
+  font-family:'Cormorant',serif;font-size:44px;font-weight:300;
+  color:var(--gold2);margin-top:20px;
+}
+.work-prod-right{}
+.work-prod-desc{font-size:15px;color:#9A8C7C;line-height:1.8;font-weight:300;margin-bottom:32px}
+.work-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:36px}
+.work-features li{
+  display:flex;gap:14px;font-size:13px;color:#8A7C6C;line-height:1.5;
+}
+.work-features li::before{
+  content:'✦';color:var(--gold);font-size:9px;margin-top:3px;flex-shrink:0;
+}
+
+/* FAQ */
+.faq-sec{background:var(--ink2);padding:100px 72px}
+.faq-list{max-width:800px;margin-top:60px}
+.faq-item{border-bottom:0.5px solid rgba(196,145,58,.12)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:28px 0;cursor:pointer;gap:20px;
+}
+.faq-q-text{
+  font-family:'Cormorant',serif;font-size:22px;font-weight:300;
+  color:var(--cream);transition:color .2s;
+}
+.faq-q:hover .faq-q-text{color:var(--gold2)}
+.faq-icon{
+  width:24px;height:24px;flex-shrink:0;
+  border:0.5px solid rgba(196,145,58,.3);display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--gold);transition:transform .3s,background .2s;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(196,145,58,.1)}
+.faq-a{
+  max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;
+}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:24px}
+.faq-a-text{font-size:14px;color:#8A7C6C;line-height:1.8;font-weight:300}
+
+/* WORK CTA */
+.work-cta{
+  padding:100px 72px;text-align:center;
+  border-top:0.5px solid rgba(196,145,58,.12);
+}
+
+/* ============ BLOG ============ */
+.blog-hero{padding:160px 72px 60px;border-bottom:0.5px solid rgba(196,145,58,.12)}
+.blog-hero-h{
+  font-family:'Cormorant',serif;font-size:clamp(60px,8vw,110px);
+  font-weight:300;line-height:.9;max-width:700px;
+}
+.blog-hero-h .ghost{
+  display:block;color:transparent;
+  -webkit-text-stroke:0.5px rgba(196,145,58,.4);font-style:italic;
+}
+
+.blog-cats{
+  display:flex;gap:24px;padding:28px 72px;
+  border-bottom:0.5px solid rgba(196,145,58,.1);flex-wrap:wrap;
+}
+.blog-cat{
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mist);text-decoration:none;padding:6px 0;
+  border-bottom:0.5px solid transparent;transition:color .2s,border-color .2s;
+  cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;
+}
+.blog-cat.sel,.blog-cat:hover{color:var(--gold2);border-bottom-color:var(--gold)}
+
+.blog-main-grid{padding:60px 72px 100px}
+.blog-featured{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:0.5px solid rgba(196,145,58,.12);margin-bottom:2px;
+}
+.blog-feat-img{
+  background:var(--ink2);min-height:400px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.blog-feat-img-ph{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:13px;color:rgba(196,145,58,.2);letter-spacing:.1em;
+}
+.blog-feat-body{padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between}
+.blog-feat-tag{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.blog-feat-h{
+  font-family:'Cormorant',serif;font-size:clamp(28px,3vw,44px);font-weight:300;
+  color:var(--cream);line-height:1.15;margin-bottom:20px;
+}
+.blog-feat-excerpt{font-size:14px;color:#8A7C6C;line-height:1.75;font-weight:300;margin-bottom:32px}
+.blog-feat-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:10px;color:var(--mist);letter-spacing:.1em;
+}
+
+.blog-small-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(196,145,58,.08);margin-top:2px;
+}
+.blog-small-card{
+  background:var(--ink);padding:36px 32px;
+  transition:background .2s;cursor:pointer;
+}
+.blog-small-card:hover{background:var(--ink2)}
+
+.blog-coming{
+  margin-top:60px;padding:60px;
+  border:0.5px solid rgba(196,145,58,.1);text-align:center;
+}
+.blog-coming-h{
+  font-family:'Cormorant',serif;font-style:italic;font-size:32px;
+  font-weight:300;color:var(--mist);margin-bottom:12px;
+}
+.blog-coming-sub{font-size:13px;color:var(--smoke);font-weight:300}
+
+/* FOOTER */
+footer{
+  border-top:0.5px solid rgba(196,145,58,.15);
+  padding:52px 72px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;font-size:16px;
+  font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);
+}
+.footer-social{display:flex;gap:28px}
+.footer-social a{
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--smoke);text-decoration:none;transition:color .2s;
+}
+.footer-social a:hover{color:var(--gold)}
+.footer-copy{font-size:10px;color:var(--smoke);letter-spacing:.05em}
+
+/* CONTACT BLOCK */
+.contact-block{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:48px;
+}
+.contact-link{
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold2);text-decoration:none;
+  padding:14px 28px;border:0.5px solid rgba(196,145,58,.25);
+  transition:background .2s,border-color .2s;
+}
+.contact-link:hover{background:rgba(196,145,58,.06);border-color:var(--gold)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.vis{opacity:1;transform:none}
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}
+.reveal.d4{transition-delay:.4s}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--smoke)}
+
+/* MOBILE */
+@media(max-width:1024px){
+  nav{padding:20px 32px}
+  nav.scrolled{padding:16px 32px}
+  .nav-links{display:none}
+  .nav-contact{display:none}
+  .burger{display:flex}
+  .hero-inner{grid-template-columns:1fr;padding:0 32px;padding-bottom:40px}
+  .hero-visual{display:none}
+  .hero-stats{padding:40px 32px;flex-wrap:wrap}
+  .stat{min-width:120px;padding:12px 0}
+  .stat-div{display:none}
+  .sec,.sec-sm{padding:80px 32px}
+  .pain-grid{grid-template-columns:1fr}
+  .about-story{grid-template-columns:1fr;gap:32px}
+  .about-story-num{display:none}
+  .values-row{grid-template-columns:1fr}
+  .val-item{padding:40px 0}
+  .big5-grid{grid-template-columns:1fr}
+  .products-home{grid-template-columns:1fr}
+  .prod-card{border-right:none;border-bottom:0.5px solid rgba(196,145,58,.12)}
+  .blog-home-grid{grid-template-columns:1fr}
+  .work-hero-grid{grid-template-columns:1fr}
+  .work-prod{grid-template-columns:1fr;gap:24px}
+  .work-prod-n{display:none}
+  .blog-featured{grid-template-columns:1fr}
+  .blog-feat-img{min-height:220px}
+  .blog-small-grid{grid-template-columns:1fr}
+  .about-hero-sub{display:none}
+  .about-hero{padding:120px 32px 60px}
+  .blog-hero{padding:120px 32px 40px}
+  .work-hero{padding:120px 32px 60px}
+  .blog-cats{padding:20px 32px}
+  .blog-main-grid{padding:40px 32px 80px}
+  .work-products{padding:0 32px 80px}
+  .faq-sec,.values-sec,.big5-sec{padding:80px 32px}
+  .work-cta,.home-cta{padding:80px 32px}
+  footer{padding:40px 32px;flex-direction:column;gap:16px;text-align:center}
+  .quote-sec{padding:80px 32px}
+}
+
+/* MOBILE NAV MENU */
+.mobile-menu{
+  display:none;position:fixed;inset:0;background:rgba(12,10,8,.98);z-index:190;
+  flex-direction:column;align-items:center;justify-content:center;gap:36px;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-family:'Cormorant',serif;font-size:40px;font-weight:300;
+  color:var(--cream);text-decoration:none;letter-spacing:.05em;
+  transition:color .2s;
+}
+.mobile-menu a:hover{color:var(--gold2)}
+.mobile-menu-close{
+  position:absolute;top:28px;right:32px;
+  font-size:20px;color:var(--mist);cursor:pointer;background:none;border:none;
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" onclick="showPage('home');return false">А. Вивчаренко</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home');return false" data-page="home">Главная</a></li>
+    <li><a href="#" onclick="showPage('about');return false" data-page="about">Обо мне</a></li>
+    <li><a href="#" onclick="showPage('work');return false" data-page="work">Работа со мной</a></li>
+    <li><a href="#" onclick="showPage('blog');return false" data-page="blog">Блог</a></li>
+  </ul>
+  <a href="https://t.me/lina_slavnaya" target="_blank" class="nav-contact">Написать</a>
+  <div class="burger" onclick="toggleMenu()">
+    <span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+  <a href="#" onclick="showPage('home');toggleMenu();return false">Главная</a>
+  <a href="#" onclick="showPage('about');toggleMenu();return false">Обо мне</a>
+  <a href="#" onclick="showPage('work');toggleMenu();return false">Работа со мной</a>
+  <a href="#" onclick="showPage('blog');toggleMenu();return false">Блог</a>
+  <a href="https://t.me/lina_slavnaya" target="_blank" style="font-size:18px;color:var(--gold)">@lina_slavnaya</a>
+</div>
+
+<!-- ============ HOME ============ -->
+<div class="page active" id="page-home">
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-rule"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Коуч · Психолог · IFS-терапевт</div>
+        <h1 class="hero-h1">
+          Ангелина<br>
+          <em>Вивчаренко</em>
+        </h1>
+        <p class="hero-sub">
+          Вы перестаёте воевать с собой.<br>
+          Вы с собой договариваетесь.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn-main" onclick="showPage('work');return false">Начать работу</a>
+          <a href="#" class="btn-ghost" onclick="showPage('about');return false">Узнать обо мне</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <div class="hero-frame-img">
+            <span class="hero-frame-ph">Ваше фото</span>
+          </div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-n">1700+</div>
+          <div class="hero-badge-l">сессий коучинга<br>и терапии</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-n">15+</div>
+        <div class="stat-l">лет практики<br>и преподавания</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <div class="stat-n">300+</div>
+        <div class="stat-l">часов<br>супервизии</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <div class="stat-n">MBA</div>
+        <div class="stat-l">Executive<br>+ магистр психологии</div>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <div class="stat-n">IFS</div>
+        <div class="stat-l">терапевт<br>Couples Institute USA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="sec pain-sec">
+    <div class="sec-label reveal">Узнаёте себя?</div>
+    <h2 class="sec-h2 reveal d1">Атлант заработал<br><em>межпозвоночную грыжу</em></h2>
+    <div class="pain-grid reveal d2">
+      <div class="pain-cell">
+        <div class="pain-num">I</div>
+        <p class="pain-text"><strong>«Грех жаловаться, но внутри дыра»</strong> — вы достигаете целей по инерции, больше не чувствуя смысла в том, что делаете</p>
+      </div>
+      <div class="pain-cell">
+        <div class="pain-num">II</div>
+        <p class="pain-text">Вы <strong>всё про себя понимаете</strong>, всё рационализируете — но понимание не приносит облегчения. Горе от ума.</p>
+      </div>
+      <div class="pain-cell">
+        <div class="pain-num">III</div>
+        <p class="pain-text">Вы застряли в <strong>гиперконтроле</strong>. Если просто выдохнуть и присесть попить кофе — кажется, что небо тут же рухнет всем на голову</p>
+      </div>
+      <div class="pain-cell">
+        <div class="pain-num">IV</div>
+        <p class="pain-text"><strong>Вам абсолютно некуда отнести свою слабость.</strong> В ответ прилетает: «У тебя же всё есть!» или «Ты сильная, справишься»</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-sec">
+    <p class="quote-body reveal">
+      Наша психика — это удивительная,<br>многогранная система. Множественность<br>личности — это не диагноз.<br><em style="color:var(--gold2)">Это невероятная красота.</em>
+    </p>
+    <div class="quote-attr reveal d1">Ангелина Вивчаренко</div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="sec" style="background:var(--ink2)">
+    <div class="about-teaser">
+      <div class="about-teaser-img reveal">
+        <div class="about-teaser-img-inner">
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:rgba(196,145,58,.2);letter-spacing:.1em">Ваше фото</span>
+        </div>
+      </div>
+      <div class="about-teaser-text reveal d2">
+        <div class="sec-label">Обо мне</div>
+        <p>Меня зовут Ангелина. Я специалист по работе с глубинными системами психики — IFS-терапевт, метакогнитивный коуч, психолог.</p>
+        <p class="pull">Мы не будем ломать ваши защиты. Мы будем бережно знакомиться с вашей уникальной внутренней системой.</p>
+        <p>Я создаю пространство для тех, кто устал быть сильным. Для успешных людей, которые хотят перестать воевать с собой и начать с собой договариваться.</p>
+        <br>
+        <a href="#" class="btn-ghost" onclick="showPage('about');return false">Читать историю</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="sec">
+    <div class="sec-label reveal">Форматы работы</div>
+    <h2 class="sec-h2 reveal d1">Как мы можем<br><em>работать вместе</em></h2>
+    <div class="products-home reveal d2">
+      <div class="prod-card">
+        <div class="prod-label">Вход</div>
+        <h3 class="prod-h">Знакомство с Внутренней Системой</h3>
+        <p class="prod-sub">Стратегическая диагностическая сессия</p>
+        <p class="prod-txt">Разовая встреча для выявления системного «бага». Мы находим ту часть, которая сейчас рулит вашей жизнью и сжигает энергию.</p>
+        <div class="prod-price">7 700 ₽</div>
+        <a href="#" class="prod-link" onclick="showPage('work');return false">Записаться</a>
+      </div>
+      <div class="prod-card feat">
+        <div class="prod-feat-badge">Флагман</div>
+        <div class="prod-label">Глубокая работа</div>
+        <h3 class="prod-h">Архитектура Перехода</h3>
+        <p class="prod-sub">Индивидуальное менторство 3–6 месяцев</p>
+        <p class="prod-txt">Глубокая пересборка операционной системы. Вход только через стратегическую сессию.</p>
+        <div class="prod-price">По запросу</div>
+        <a href="#" class="prod-link" onclick="showPage('work');return false">Узнать подробнее</a>
+      </div>
+      <div class="prod-card">
+        <div class="prod-label">Эксклюзив</div>
+        <h3 class="prod-h">Стартап Себя</h3>
+        <p class="prod-sub">Проектный формат менторинга</p>
+        <p class="prod-txt">Сопровождение в реальном запуске нового проекта или карьеры. Вход только через специальную анкету.</p>
+        <div class="prod-price">По анкете</div>
+        <a href="#" class="prod-link" onclick="showPage('work');return false">Подать анкету</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG TEASER -->
+  <section class="sec" style="padding-top:0">
+    <div class="sec-label reveal">Блог</div>
+    <h2 class="sec-h2 reveal d1">Читать<br><em>последнее</em></h2>
+    <div class="blog-home-grid reveal d2">
+      <div class="blog-card" onclick="showPage('blog')">
+        <div class="blog-tag">Выгорание</div>
+        <h3 class="blog-h">Почему умные люди не могут просто взять и измениться</h3>
+        <p class="blog-excerpt">Вы всё про себя знаете, читали умные книги, ходили к психологам. Но понимание проблемы — не решение проблемы.</p>
+        <div class="blog-read">Читать</div>
+      </div>
+      <div class="blog-card" onclick="showPage('blog')">
+        <div class="blog-tag">IFS</div>
+        <h3 class="blog-h">Внутренний критик: почему он появился и как перестать с ним воевать</h3>
+        <p class="blog-excerpt">Ваш внутренний критик — не враг. Это уставший защитник, который взял на себя слишком много.</p>
+        <div class="blog-read">Читать</div>
+      </div>
+      <div class="blog-card" onclick="showPage('blog')">
+        <div class="blog-tag">Гиперконтроль</div>
+        <h3 class="blog-h">Атлант и его грыжа: как гиперконтроль стал вашей главной проблемой</h3>
+        <p class="blog-excerpt">Вы настолько круто научились всё вывозить, что теперь это ваша главная проблема.</p>
+        <div class="blog-read">Читать</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOME CTA -->
+  <section class="home-cta">
+    <h2 class="home-cta-h reveal">Снимайте доспехи.<br><span>Выдыхайте.</span></h2>
+    <p class="home-cta-sub reveal d1">Вы уже по адресу. Напишите — и мы найдём формат, который подойдёт именно вам.</p>
+    <div class="contact-block reveal d2">
+      <a href="https://t.me/lina_slavnaya" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        Telegram @lina_slavnaya
+      </a>
+      <a href="https://instagram.com/lina_slavnaya" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>
+        Instagram lina_slavnaya
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Ангелина Вивчаренко</div>
+    <div class="footer-social">
+      <a href="https://t.me/lina_slavnaya" target="_blank">Telegram</a>
+      <a href="https://instagram.com/lina_slavnaya" target="_blank">Instagram</a>
+    </div>
+    <div class="footer-copy">Коуч · Психолог · IFS-терапевт</div>
+  </footer>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="page" id="page-about">
+  <section class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div class="about-hero-rule"></div>
+    <div class="about-hero-h">
+      <span class="line1">Обо</span><br>
+      <span class="line2">мне</span>
+    </div>
+    <div class="about-hero-sub">
+      Коуч по реализации, психолог, IFS-терапевт — специалист по работе с глубинными системами психики
+    </div>
+  </section>
+
+  <div class="about-story">
+    <div class="about-story-num">01</div>
+    <div class="about-story-text">
+      <div class="sec-label">История</div>
+      <p>Меня зовут Ангелина. Я специалист по работе с глубинными системами психики. В своей практике я опираюсь на феноменологический подход и принцип «Здесь и сейчас».</p>
+      <p class="big">Мы не будем бесконечно ковырять прошлое или ломать ваши защиты. Мы будем бережно знакомиться с вашей уникальной внутренней системой, чтобы увидеть её красоту.</p>
+      <p>Я создаю пространство для тех, кто устал быть сильным. Для успешных, высокоинтеллектуальных людей — предпринимателей, топ-менеджеров, экспертов — «генеральных директоров» своей жизни. Тех, у кого внешне всё супер, а внутри — звенящая усталость и некуда отнести свою слабость.</p>
+      <p>Мои главные ценности — честность, юмор и мастерство. Без умения поржать над своими загонами трансформация невозможна. Именно так я работаю: много честности (порой неудобной), науки и самоиронии.</p>
+    </div>
+    <div class="about-creds">
+      <div class="creds-title">Образование и сертификации</div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">MBA Executive (coaching, diagnostics, mentoring)</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">Магистр психологии, КПТ-терапевт (МИП)</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">IFS-терапевт</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">Сертифицированный метакогнитивный коуч (Канада)</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">Семейный терапевт — Couples Institute Эллин Бейдер, USA</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">Коуч ICTA, супервизор, ментор, диагност</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">Тренер программ по голосу, речи и публичным выступлениям</div></div>
+      <div class="cred-item"><div class="cred-dash">—</div><div class="cred-text">1700+ сессий · 300+ часов супервизии · 15+ лет практики</div></div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <section class="values-sec">
+    <div class="sec-label reveal">Ценности</div>
+    <h2 class="sec-h2 reveal d1">Что лежит<br><em>в основе</em></h2>
+    <div class="values-row reveal d2">
+      <div class="val-item">
+        <div class="val-num">01</div>
+        <div class="val-h">Честность</div>
+        <p class="val-text">Быть честным с собой, другими и миром — главный постулат. Ложь отвлекает нас от самого важного — гиперреалистичного взгляда на жизнь, который позволяет смотреть на возможности, о которых вы даже не смели мечтать.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">02</div>
+        <div class="val-h">Юмор</div>
+        <p class="val-text">Человек, способный смеяться над собой и относиться к драматическим поворотам судьбы с долей самоиронии, уже достиг степени осознанности, достаточной для феноменальной личностной трансформации.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">03</div>
+        <div class="val-h">Мастерство</div>
+        <p class="val-text">Страстно люблю познавать новые грани своих компетенций, развивать навыки, которые позволяют выходить за рамки обычной коучинговой экспертизы. Мастерство — превыше всего.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIG FIVE -->
+  <section class="big5-sec">
+    <div class="sec-label reveal">Личностный профиль</div>
+    <h2 class="sec-h2 reveal d1">Big Five —<br><em>кто я есть</em></h2>
+    <div class="big5-grid reveal d2">
+      <div class="big5-item">
+        <div class="big5-label">Кропотливость</div>
+        <div class="big5-bar-wrap"><div class="big5-bar" style="width:98%"></div></div>
+        <div class="big5-score">4.9</div>
+      </div>
+      <div class="big5-item">
+        <div class="big5-label">Экстраверсия</div>
+        <div class="big5-bar-wrap"><div class="big5-bar" style="width:92%"></div></div>
+        <div class="big5-score">4.6</div>
+      </div>
+      <div class="big5-item">
+        <div class="big5-label">Аккомодация</div>
+        <div class="big5-bar-wrap"><div class="big5-bar" style="width:92%"></div></div>
+        <div class="big5-score">4.6</div>
+      </div>
+      <div class="big5-item">
+        <div class="big5-label">Открытость</div>
+        <div class="big5-bar-wrap"><div class="big5-bar" style="width:90%"></div></div>
+        <div class="big5-score">4.5</div>
+      </div>
+      <div class="big5-item">
+        <div class="big5-label">Невротизм</div>
+        <div class="big5-bar-wrap"><div class="big5-bar" style="width:70%"></div></div>
+        <div class="big5-score">3.5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHODOLOGY -->
+  <section class="sec" style="background:var(--ink2)">
+    <div class="sec-label reveal">Методология</div>
+    <h2 class="sec-h2 reveal d1">Инструменты<br><em>и подходы</em></h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:48px" class="reveal d2">
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">IFS-терапия</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">Метакогнитивное программирование</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">КПТ</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">ДПТ</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">ЭФТ</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">АСТ / Схема-терапия</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">Феноменологический подход</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">Глубинная диагностика</span>
+      <span style="font-size:12px;padding:10px 20px;border:0.5px solid rgba(196,145,58,.2);color:var(--mist);letter-spacing:.1em">Позитивная психология</span>
+    </div>
+  </section>
+
+  <section class="home-cta">
+    <h2 class="home-cta-h reveal">Готовы<br><span>познакомиться?</span></h2>
+    <p class="home-cta-sub reveal d1">Напишите мне — начнём с разговора, без обязательств.</p>
+    <div class="contact-block reveal d2">
+      <a href="https://t.me/lina_slavnaya" target="_blank" class="contact-link">Telegram @lina_slavnaya</a>
+      <a href="#" class="contact-link" onclick="showPage('work');return false">Форматы работы</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Ангелина Вивчаренко</div>
+    <div class="footer-social">
+      <a href="https://t.me/lina_slavnaya" target="_blank">Telegram</a>
+      <a href="https://instagram.com/lina_slavnaya" target="_blank">Instagram</a>
+    </div>
+    <div class="footer-copy">Коуч · Психолог · IFS-терапевт</div>
+  </footer>
+</div>
+
+<!-- ============ WORK ============ -->
+<div class="page" id="page-work">
+  <section class="work-hero">
+    <div class="work-hero-grid">
+      <div>
+        <div class="sec-label">Работа со мной</div>
+        <h1 class="sec-h2" style="font-size:clamp(52px,6vw,90px)">Три формата.<br><em>Один путь.</em></h1>
+      </div>
+      <div class="work-hero-right">
+        <p>Каждый формат — это отдельная история. Я не раздаю готовые ноты. Моя задача — стать тем пространством, которое заметит: кто именно в вашем ансамбле сейчас фальшивит.</p>
+        <p style="margin-top:16px">У нас будет много честности, науки и самоиронии. Потому что без умения поржать над своими загонами трансформация невозможна.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="work-products">
+
+    <!-- PRODUCT 1 -->
+    <div class="work-prod">
+      <div class="work-prod-n">01</div>
+      <div class="work-prod-left">
+        <div class="prod-label">Вход в работу</div>
+        <h2 class="prod-h">Знакомство с Внутренней Системой</h2>
+        <p class="prod-sub">Стратегическая диагностическая сессия</p>
+        <div class="work-prod-price">7 700 ₽</div>
+        <a href="https://t.me/lina_slavnaya" target="_blank" class="btn-main" style="margin-top:8px;display:inline-block">Записаться</a>
+      </div>
+      <div class="work-prod-right">
+        <p class="work-prod-desc">Разовая встреча для выявления системного «бага». Мы находим ту субличность — того Менеджера — который сейчас рулит вашей жизнью, сжигает энергию и не даёт выдохнуть.</p>
+        <p class="work-prod-desc">Вход в программу «Архитектура Перехода» — только через эту сессию.</p>
+        <ul class="work-features">
+          <li>Глубокая диагностика внутренней системы (90–120 мин)</li>
+          <li>Выявление доминирующей стратегии и блокирующей части</li>
+          <li>Понятная карта: что происходит и что с этим делать</li>
+          <li>Ответы на вопросы и рекомендации по следующим шагам</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRODUCT 2 -->
+    <div class="work-prod">
+      <div class="work-prod-n">02</div>
+      <div class="work-prod-left">
+        <div class="prod-feat-badge" style="position:static;display:inline-block;margin-bottom:16px">Флагман</div>
+        <div class="prod-label">Глубокая работа</div>
+        <h2 class="prod-h">Архитектура Перехода</h2>
+        <p class="prod-sub">Индивидуальное менторство 3–6 месяцев</p>
+        <div class="work-prod-price">По запросу</div>
+        <a href="https://t.me/lina_slavnaya" target="_blank" class="btn-main" style="margin-top:8px;display:inline-block">Узнать условия</a>
+      </div>
+      <div class="work-prod-right">
+        <p class="work-prod-desc">Глубокая пересборка «операционной системы». Структурированный последовательный процесс изучения структуры и функционирования внутренней системы — и наращивание навыков для реализации ваших задач.</p>
+        <p class="work-prod-desc">Только тотальное присутствие и радикальная честность.</p>
+        <ul class="work-features">
+          <li>Еженедельные индивидуальные встречи (60–90 мин)</li>
+          <li>Работа с субличностями по методу IFS</li>
+          <li>Метакогнитивное перепрограммирование реакций</li>
+          <li>Сопровождение между сессиями</li>
+          <li>Вход — только через стратегическую диагностику</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRODUCT 3 -->
+    <div class="work-prod" style="border-bottom:none">
+      <div class="work-prod-n">03</div>
+      <div class="work-prod-left">
+        <div class="prod-label">Эксклюзив</div>
+        <h2 class="prod-h">Стартап Себя</h2>
+        <p class="prod-sub">Проектный формат менторинга</p>
+        <div class="work-prod-price">По анкете</div>
+        <a href="https://t.me/lina_slavnaya" target="_blank" class="btn-main" style="margin-top:8px;display:inline-block">Подать анкету</a>
+      </div>
+      <div class="work-prod-right">
+        <p class="work-prod-desc">Сопровождение в реальном запуске нового проекта или карьерного перехода. Психология + стратегия + реализация — одновременно. Для тех, кто готов к масштабным изменениям.</p>
+        <p class="work-prod-desc">Формат менторинга. Вход — только через специальную анкету.</p>
+        <ul class="work-features">
+          <li>Для предпринимателей и топ-менеджеров в точке перехода</li>
+          <li>Запуск нового направления или карьерный сдвиг</li>
+          <li>Работа с блоками реализации и самосаботажем</li>
+          <li>Стратегия + психологическое сопровождение в связке</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq-sec">
+    <div class="sec-label reveal">Частые вопросы</div>
+    <h2 class="sec-h2 reveal d1">FAQ</h2>
+    <div class="faq-list reveal d2">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Чем вы отличаетесь от обычного психолога?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">Я работаю на стыке коучинга, терапии и менторинга. Не просто «слушаю и задаю вопросы» — мы вместе движемся к конкретным изменениям. IFS-подход позволяет работать с внутренней системой как с командой, а не как с набором проблем.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Как проходят сессии — онлайн или офлайн?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">Работаю онлайн через Zoom или другую удобную платформу. Это даёт возможность работать с клиентами из любой точки мира и сохранять комфортную для вас среду.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Обязательно ли начинать с диагностической сессии?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">Для «Архитектуры Перехода» — да, это обязательный вход. Диагностика позволяет нам обоим понять, подходим ли мы друг другу и есть ли смысл в долгосрочной работе. Это честно по отношению к вашему времени и деньгам.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Как быстро можно ожидать результатов?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a"><p class="faq-a-text">Уже после первой сессии появляется ясность — вы понимаете, что именно происходит и почему. Глубокие, устойчивые изменения — это процесс 3–6 месяцев. Быстрые «починки» не работают с системными паттернами.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="work-cta">
+    <h2 class="home-cta-h reveal">Начать с<br><span>разговора</span></h2>
+    <p class="home-cta-sub reveal d1">Напишите в Telegram — и мы найдём подходящий формат.</p>
+    <div class="contact-block reveal d2">
+      <a href="https://t.me/lina_slavnaya" target="_blank" class="contact-link">Telegram @lina_slavnaya</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Ангелина Вивчаренко</div>
+    <div class="footer-social">
+      <a href="https://t.me/lina_slavnaya" target="_blank">Telegram</a>
+      <a href="https://instagram.com/lina_slavnaya" target="_blank">Instagram</a>
+    </div>
+    <div class="footer-copy">Коуч · Психолог · IFS-терапевт</div>
+  </footer>
+</div>
+
+<!-- ============ BLOG ============ -->
+<div class="page" id="page-blog">
+  <section class="blog-hero">
+    <div class="sec-label">Блог</div>
+    <h1 class="blog-hero-h">
+      Читать<br>
+      <span class="ghost">глубже</span>
+    </h1>
+  </section>
+
+  <div class="blog-cats">
+    <button class="blog-cat sel" onclick="setCat(this,'all')">Все статьи</button>
+    <button class="blog-cat" onclick="setCat(this,'ifs')">IFS</button>
+    <button class="blog-cat" onclick="setCat(this,'burnout')">Выгорание</button>
+    <button class="blog-cat" onclick="setCat(this,'control')">Гиперконтроль</button>
+    <button class="blog-cat" onclick="setCat(this,'relations')">Отношения</button>
+  </div>
+
+  <div class="blog-main-grid">
+    <!-- FEATURED -->
+    <div class="blog-featured">
+      <div class="blog-feat-img">
+        <span class="blog-feat-img-ph">Фото к статье</span>
+      </div>
+      <div class="blog-feat-body">
+        <div>
+          <div class="blog-feat-tag">Выгорание · Главная статья</div>
+          <h2 class="blog-feat-h">Почему умные люди не могут просто взять и измениться</h2>
+          <p class="blog-feat-excerpt">Вы наверняка читали умные книги, ходили к психологам и прекрасно знаете свои травмы. Вы можете с презентацией в PowerPoint объяснить, почему вы выгорели. Но вот парадокс: понимание проблемы не решает проблему.</p>
+        </div>
+        <div class="blog-feat-meta">
+          <span>Читать статью →</span>
+          <span>8 мин</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SMALL GRID -->
+    <div class="blog-small-grid">
+      <div class="blog-small-card">
+        <div class="blog-tag">IFS</div>
+        <h3 class="blog-h">Внутренний критик: почему он появился и как перестать с ним воевать</h3>
+        <p class="blog-excerpt">Ваш критик — не враг. Это уставший защитник, который взял на себя слишком много.</p>
+        <div class="blog-read">Читать</div>
+      </div>
+      <div class="blog-small-card">
+        <div class="blog-tag">Гиперконтроль</div>
+        <h3 class="blog-h">Атлант и его грыжа: как гиперконтроль стал вашей главной проблемой</h3>
+        <p class="blog-excerpt">Вы настолько круто научились всё вывозить, что теперь это ваша главная проблема.</p>
+        <div class="blog-read">Читать</div>
+      </div>
+      <div class="blog-small-card">
+        <div class="blog-tag">IFS</div>
+        <h3 class="blog-h">Что такое IFS и почему это не очередная психологическая техника</h3>
+        <p class="blog-excerpt">Метод Ричарда Шварца — не просто инструмент. Это принципиально другой взгляд на психику.</p>
+        <div class="blog-read">Читать</div>
+      </div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="blog-coming reveal">
+      <div class="blog-coming-h">Блог только начинается</div>
+      <p class="blog-coming-sub">Новые статьи выходят регулярно. Следите в Instagram и Telegram.</p>
+      <div style="display:flex;gap:14px;justify-content:center;margin-top:24px">
+        <a href="https://t.me/lina_slavnaya" target="_blank" class="blog-cat" style="padding:8px 20px;border:0.5px solid rgba(196,145,58,.3);border-radius:0;color:var(--gold)">Telegram</a>
+        <a href="https://instagram.com/lina_slavnaya" target="_blank" class="blog-cat" style="padding:8px 20px;border:0.5px solid rgba(196,145,58,.3);border-radius:0;color:var(--gold)">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Ангелина Вивчаренко</div>
+    <div class="footer-social">
+      <a href="https://t.me/lina_slavnaya" target="_blank">Telegram</a>
+      <a href="https://instagram.com/lina_slavnaya" target="_blank">Instagram</a>
+    </div>
+    <div class="footer-copy">Коуч · Психолог · IFS-терапевт</div>
+  </footer>
+</div>
+
+<script>
+// CURSOR
+const cur = document.getElementById('cur');
+const ring = document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function animRing(){
+  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+document.querySelectorAll('a,button,.blog-card,.blog-small-card,.pain-cell,.faq-q').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ring.style.transform='translate(-50%,-50%) scale(1.8)';ring.style.borderColor='rgba(196,145,58,.5)'});
+  el.addEventListener('mouseleave',()=>{ring.style.transform='translate(-50%,-50%) scale(1)';ring.style.borderColor='rgba(196,145,58,.4)'});
+});
+
+// NAV scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// PAGES
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active',a.dataset.page===name);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(initReveal,100);
+}
+
+// REVEAL ON SCROLL
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+  },{threshold:.1});
+  document.querySelectorAll('.page.active .reveal').forEach(el=>{
+    if(!el.classList.contains('vis'))obs.observe(el);
+  });
+}
+initReveal();
+
+// FAQ
+function toggleFaq(q){
+  const item=q.parentElement;
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen)item.classList.add('open');
+}
+
+// BLOG CATS
+function setCat(btn,cat){
+  document.querySelectorAll('.blog-cat').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+
+// MOBILE MENU
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// BIG5 BARS animate on view
+const big5obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.big5-bar').forEach(b=>{
+        const w=b.style.width;b.style.width='0';
+        setTimeout(()=>b.style.width=w,50);
+      });
+      big5obs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.big5-grid').forEach(g=>big5obs.observe(g));
+</script>
+</body>
+</html>
